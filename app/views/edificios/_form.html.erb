@@ -1,8 +1,8 @@
-<%= form_with(model: edificio) do |form| %>
+<%= form_with(model: edificio, class: 'form-group') do |form| %>
   <% if edificio.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(edificio.errors.count, "error") %> prohibited this edificio from being saved:</h2>
-
+    <div class="alert alert-danger">
+      <h2><%= pluralize(edificio.errors.count, "error") %> prohibieron que este edificio se guardara:</h2>
+      
       <ul>
         <% edificio.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,57 +11,62 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :nombre, style: "display: block" %>
-    <%= form.text_field :nombre %>
+  <!-- Nombre del edificio -->
+  <div class="form-group">
+    <%= form.label :nombre %>
+    <%= form.text_field :nombre, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.label :direccion, style: "display: block" %>
-    <%= form.text_field :direccion %>
+  <!-- Dirección del edificio -->
+  <div class="form-group">
+    <%= form.label :direccion %>
+    <%= form.text_field :direccion, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.label :comuna_id, style: "display: block" %>
-    <%= form.number_field :comuna_id %>
+  <!-- ID de la Comuna -->
+  <div class="form-group">
+    <%= form.label :comuna_id %>
+    <%= form.number_field :comuna_id, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.label :piscina, style: "display: block" %>
-    <%= form.check_box :piscina %>
+  <!-- Servicios del edificio -->
+  <div class="form-check">
+    <%= form.check_box :piscina, class: 'form-check-input' %>
+    <%= form.label :piscina, class: 'form-check-label' %>
   </div>
 
-  <div>
-    <%= form.label :quincho, style: "display: block" %>
-    <%= form.check_box :quincho %>
+  <div class="form-check">
+    <%= form.check_box :quincho, class: 'form-check-input' %>
+    <%= form.label :quincho, class: 'form-check-label' %>
   </div>
 
-  <div>
-    <%= form.label :gimnasio, style: "display: block" %>
-    <%= form.check_box :gimnasio %>
+  <div class="form-check">
+    <%= form.check_box :gimnasio, class: 'form-check-input' %>
+    <%= form.label :gimnasio, class: 'form-check-label' %>
   </div>
 
-  <div>
-    <%= form.label :areas_verdes, style: "display: block" %>
-    <%= form.check_box :areas_verdes %>
+  <div class="form-check">
+    <%= form.check_box :areas_verdes, class: 'form-check-input' %>
+    <%= form.label :areas_verdes, class: 'form-check-label' %>
   </div>
 
-  <div>
-    <%= form.label :juegos_infantiles, style: "display: block" %>
-    <%= form.check_box :juegos_infantiles %>
+  <div class="form-check">
+    <%= form.check_box :juegos_infantiles, class: 'form-check-input' %>
+    <%= form.label :juegos_infantiles, class: 'form-check-label' %>
   </div>
 
-  <div>
-    <%= form.label :estacionamiento, style: "display: block" %>
-    <%= form.check_box :estacionamiento %>
+  <div class="form-check">
+    <%= form.check_box :estacionamiento, class: 'form-check-input' %>
+    <%= form.label :estacionamiento, class: 'form-check-label' %>
   </div>
 
-  <div>
-    <%= form.label :pet_friendly, style: "display: block" %>
-    <%= form.check_box :pet_friendly %>
+  <div class="form-check">
+    <%= form.check_box :pet_friendly, class: 'form-check-input' %>
+    <%= form.label :pet_friendly, class: 'form-check-label' %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <!-- Botón de envío -->
+  <div class="form-group">
+    <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>

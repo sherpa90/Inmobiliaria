@@ -1,7 +1,8 @@
 class HomeController < ApplicationController
   def index
-    @departamentos_disponibles = Departamento.where(estado: 'disponible')
+    @pagy, @departamentos_disponibles = pagy(Departamento.where(estado: 'disponible'))
   end
+  
   
   
 end

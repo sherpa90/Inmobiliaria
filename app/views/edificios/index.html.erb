@@ -1,7 +1,9 @@
+<!-- Mensaje de notificación -->
 <p style="color: green"><%= notice %></p>
 
 <h1>Edificios</h1>
 
+<!-- Tabla de edificios -->
 <div class="table-responsive">
   <table class="table table-bordered table-hover">
     <thead>
@@ -12,11 +14,13 @@
       </tr>
     </thead>
     <tbody>
+      <!-- Iterar sobre cada edificio y mostrar en la tabla -->
       <% @edificios.each do |edificio| %>
         <tr>
           <td><%= edificio.nombre %></td>
           <td><%= edificio.direccion %></td>
           <td>
+            <!-- Acciones: Ver, Editar, Eliminar -->
             <%= link_to 'Ver', edificio, class: 'btn btn-primary btn-sm' %>
             <%= link_to 'Editar', edit_edificio_path(edificio), class: 'btn btn-warning btn-sm' %>
             <%= link_to 'Eliminar', edificio, method: :delete, data: { confirm: 'Estás seguro?' }, class: 'btn btn-danger btn-sm' %>
@@ -27,4 +31,5 @@
   </table>
 </div>
 
+<!-- Botón para crear un nuevo edificio -->
 <%= link_to "Nuevo Edificio", new_edificio_path, class: 'btn btn-success' %>

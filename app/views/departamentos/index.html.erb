@@ -1,25 +1,13 @@
-<div class="container">
-  <div class="row">
-    <% @departamentos.each do |departamento| %>
-      <div class="col-md-4">
-        <div class="card">
-          <% if departamento.imagenes.attached? %>
-            <%= image_tag(departamento.imagenes.first.variant(resize: "300x300"), class: "card-img-top") %>
-          <% else %>
-            <%= image_tag("stock_image.jpg", class: "card-img-top") %>
-          <% end %>
-          <div class="card-body">
-            <h5 class="card-title"><%= departamento.nombre %></h5>
-            <p class="card-text">
-              <%= departamento.descripcion %><br>
-              Precio: <%= departamento.precio %><br>
-              Habitaciones: <%= departamento.habitaciones %><br>
-              Baños: <%= departamento.baños %>
-            </p>
-            <%= link_to 'Ver detalles', departamento, class: 'btn btn-primary' %>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
+<div class="card-body">
+  <!-- Título de la tarjeta -->
+  <h5 class="card-title">Número: <%= departamento.numero %></h5>
+  
+  <!-- Texto de la tarjeta -->
+  <p class="card-text">
+    Precio: <%= departamento.precio %><br>
+    Habitaciones: <%= departamento.habitaciones %><br>
+    Baños: <%= departamento.baños %><br>
+    Estado: <%= departamento.estado %><br>
+    Modalidad: <%= departamento.modalidad %><br>
+  </p>
 </div>

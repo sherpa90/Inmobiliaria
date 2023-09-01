@@ -1,5 +1,6 @@
 class ComunasController < ApplicationController
   before_action :set_comuna, only: %i[ show edit update destroy ]
+  before_action :check_admin, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /comunas or /comunas.json
   def index

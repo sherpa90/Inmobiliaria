@@ -3,12 +3,16 @@
 <h1>Comunas</h1>
 
 <div id="comunas">
+  <!-- Itera sobre cada comuna en la lista de comunas -->
   <% @comunas.each do |comuna| %>
+    <!-- Renderiza la comuna actual -->
     <%= render comuna %>
     <p>
+      <!-- Enlace para mostrar la comuna actual -->
       <%= link_to "Show this comuna", comuna %>
     </p>
   <% end %>
 </div>
 
+<!-- Enlace para crear una nueva comuna -->
 <%= link_to "New comuna", new_comuna_path %>

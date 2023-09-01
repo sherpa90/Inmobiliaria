@@ -1,6 +1,7 @@
 class DepartamentosController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :check_if_admin_or_vendedor, only: [:index_admin]
+  before_action :set_departamento, only: [:show, :edit, :update, :destroy]
 
   # GET /departamentos or /departamentos.json
   def index
@@ -9,11 +10,11 @@ class DepartamentosController < ApplicationController
 
   def index_admin
     @departamentos = Departamento.all
+    
   end
 
   # GET /departamentos/1 or /departamentos/1.json
   def show
-    @departamento = Departamento.find(params[:id])
     @edificio = @departamento.edificio
   end
 
@@ -76,9 +77,8 @@ class DepartamentosController < ApplicationController
     end
 
     def check_if_admin_or_vendedor
-    unless current_user.admin? || current_user.vendedor?
-      redirect_to root_path, alert: "No tienes permiso para acceder a esta página"
+      unless current_user.admin? || current_user.vendedor?
+        redirect_to root_path, alert: "No tienes permiso para acceder a esta página"
+      end
     end
-  end
 end
-

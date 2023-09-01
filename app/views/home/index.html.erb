@@ -1,22 +1,22 @@
 <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <h1>Bienvenido a Inmobiliaria Buena Vista</h1>
-        <p>Encuentra tu próximo hogar aquí.</p>
-      </div>
-      <div class="col-md-6">
-        <img src="path_to_your_image.jpg" alt="Imagen de Bienvenida" class="img-fluid">
-      </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Bienvenido a Inmobiliaria Buena Vista</h1>
+      <p>Encuentra tu próximo hogar aquí.</p>
     </div>
-    
-    <h2>Propiedades disponibles</h2>
-    
-    <div class="row">
+  </div>
+  
+  <h2>Propiedades disponibles</h2>
+  <div class="text-center">
+    <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
+  </div>
+  <div class="row">
+    <% if @departamentos_disponibles.any? %> <!-- Verifica si hay departamentos disponibles -->
       <% @departamentos_disponibles.each do |departamento| %>
         <div class="col-md-4">
           <div class="card">
-           
             <div class="card-body">
+              <!-- Muestra el número del departamento y otros detalles -->
               <h5 class="card-title"><%= departamento.numero %></h5>
               <p class="card-text">
                 Habitaciones: <%= departamento.habitaciones %><br>
@@ -24,11 +24,18 @@
                 Modalidad: <%= departamento.modalidad %><br>
                 Precio: <%= departamento.precio %>
               </p>
+              <!-- Enlace para ver más detalles del departamento -->
               <a href="<%= departamento_path(departamento) %>" class="btn btn-primary">Ver más detalles</a>
             </div>
           </div>
         </div>
+        
       <% end %>
-    </div>
+    <% else %> <!-- Muestra un mensaje si no hay departamentos disponibles -->
+      <div class="col-md-12">
+        <p>No hay propiedades disponibles en este momento.</p>
+      </div>
+      
+    <% end %>
   </div>
-  
+</div>

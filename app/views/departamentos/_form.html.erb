@@ -1,9 +1,11 @@
 <%= form_with(model: [:admin, @departamento]) do |form| %>
   <% if @departamento.errors.any? %>
     <div id="error_explanation">
+      <!-- Muestra el número de errores -->
       <h2><%= pluralize(@departamento.errors.count, "error") %> prohibited this departamento from being saved:</h2>
 
       <ul>
+        <!-- Itera sobre cada mensaje de error y lo muestra en una lista -->
         <% @departamento.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
@@ -12,13 +14,16 @@
   <% end %>
 
   <div class="field">
+    <!-- Etiqueta para el campo edificio_id -->
     <%= form.label :edificio_id %>
+    <!-- Campo de selección para edificio_id -->
     <%= form.collection_select :edificio_id, @edificios, :id, :nombre, prompt: 'Seleccione un edificio' %>
   </div>
 
   <!-- ... otros campos ... -->
 
   <div class="actions">
+    <!-- Botón de envío del formulario -->
     <%= form.submit %>
   </div>
 <% end %>

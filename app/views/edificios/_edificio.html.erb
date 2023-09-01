@@ -1,52 +1,19 @@
-<div id="<%= dom_id edificio %>">
-  <p>
-    <strong>Nombre:</strong>
-    <%= edificio.nombre %>
-  </p>
+<div id="<%= dom_id edificio %>" class="card" style="width: 18rem;">
+  <div class="card-body">
+    <!-- Nombre del edificio -->
+    <h5 class="card-title"><strong>Nombre:</strong> <%= edificio.nombre %></h5>
 
-  <p>
-    <strong>Direccion:</strong>
-    <%= edificio.direccion %>
-  </p>
-
-  <p>
-    <strong>Comuna:</strong>
-    <%= edificio.comuna_id %>
-  </p>
-
-  <p>
-    <strong>Piscina:</strong>
-    <%= edificio.piscina %>
-  </p>
-
-  <p>
-    <strong>Quincho:</strong>
-    <%= edificio.quincho %>
-  </p>
-
-  <p>
-    <strong>Gimnasio:</strong>
-    <%= edificio.gimnasio %>
-  </p>
-
-  <p>
-    <strong>Areas verdes:</strong>
-    <%= edificio.areas_verdes %>
-  </p>
-
-  <p>
-    <strong>Juegos infantiles:</strong>
-    <%= edificio.juegos_infantiles %>
-  </p>
-
-  <p>
-    <strong>Estacionamiento:</strong>
-    <%= edificio.estacionamiento %>
-  </p>
-
-  <p>
-    <strong>Pet friendly:</strong>
-    <%= edificio.pet_friendly %>
-  </p>
-
+    <!-- Datos del edificio -->
+    <p class="card-text">
+      <strong>Dirección:</strong> <%= edificio.direccion %><br>
+      <strong>Comuna:</strong> <%= edificio.comuna_id %><br>
+      <strong>Piscina:</strong> <%= edificio.piscina %><br>
+      <strong>Quincho:</strong> <%= edificio.quincho %><br>
+      <strong>Gimnasio:</strong> <%= edificio.gimnasio %><br>
+      <strong>Áreas verdes:</strong> <%= edificio.areas_verdes %><br>
+      <strong>Juegos infantiles:</strong> <%= edificio.juegos_infantiles %><br>
+      <strong>Estacionamiento:</strong> <%= edificio.estacionamiento %><br>
+      <strong>Pet friendly:</strong> <%= edificio.pet_friendly %>
+    </p>
+  </div>
 </div>
