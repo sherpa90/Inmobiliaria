@@ -1,52 +1,24 @@
-<%= form_with(model: departamento) do |form| %>
-  <% if departamento.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(departamento.errors.count, "error") %> prohibited this departamento from being saved:</h2>
+<%= form_with(model: [:admin, @departamento]) do |form| %>
+  <% if @departamento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@departamento.errors.count, "error") %> prohibited this departamento from being saved:</h2>
 
       <ul>
-        <% departamento.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% @departamento.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :numero, style: "display: block" %>
-    <%= form.number_field :numero %>
+  <div class="field">
+    <%= form.label :edificio_id %>
+    <%= form.collection_select :edificio_id, @edificios, :id, :nombre, prompt: 'Seleccione un edificio' %>
   </div>
 
-  <div>
-    <%= form.label :precio, style: "display: block" %>
-    <%= form.number_field :precio %>
-  </div>
+  <!-- ... otros campos ... -->
 
-  <div>
-    <%= form.label :habitaciones, style: "display: block" %>
-    <%= form.number_field :habitaciones %>
-  </div>
-
-  <div>
-    <%= form.label :baños, style: "display: block" %>
-    <%= form.number_field :baños %>
-  </div>
-
-  <div>
-    <%= form.label :estado, style: "display: block" %>
-    <%= form.text_field :estado %>
-  </div>
-
-  <div>
-    <%= form.label :modalidad, style: "display: block" %>
-    <%= form.text_field :modalidad %>
-  </div>
-
-  <div>
-    <%= form.label :edificio_id, style: "display: block" %>
-    <%= form.number_field :edificio_id %>
-  </div>
-
-  <div>
+  <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>

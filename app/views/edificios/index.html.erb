@@ -2,13 +2,29 @@
 
 <h1>Edificios</h1>
 
-<div id="edificios">
-  <% @edificios.each do |edificio| %>
-    <%= render edificio %>
-    <p>
-      <%= link_to "Show this edificio", edificio %>
-    </p>
-  <% end %>
+<div class="table-responsive">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Dirección</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @edificios.each do |edificio| %>
+        <tr>
+          <td><%= edificio.nombre %></td>
+          <td><%= edificio.direccion %></td>
+          <td>
+            <%= link_to 'Ver', edificio, class: 'btn btn-primary btn-sm' %>
+            <%= link_to 'Editar', edit_edificio_path(edificio), class: 'btn btn-warning btn-sm' %>
+            <%= link_to 'Eliminar', edificio, method: :delete, data: { confirm: 'Estás seguro?' }, class: 'btn btn-danger btn-sm' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 
-<%= link_to "New edificio", new_edificio_path %>
+<%= link_to "Nuevo Edificio", new_edificio_path, class: 'btn btn-success' %>

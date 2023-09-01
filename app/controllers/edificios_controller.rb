@@ -1,5 +1,7 @@
 class EdificiosController < ApplicationController
-  before_action :set_edificio, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
+  before_action :check_admin, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_edificio, only: [:show, :edit, :update, :destroy]
 
   # GET /edificios or /edificios.json
   def index
@@ -8,6 +10,7 @@ class EdificiosController < ApplicationController
 
   # GET /edificios/1 or /edificios/1.json
   def show
+    @edificio = Edificio.find(params[:id])
   end
 
   # GET /edificios/new
@@ -22,15 +25,11 @@ class EdificiosController < ApplicationController
   # POST /edificios or /edificios.json
   def create
     @edificio = Edificio.new(edificio_params)
-
-    respond_to do |format|
-      if @edificio.save
-        format.html { redirect_to edificio_url(@edificio), notice: "Edificio was successfully created." }
-        format.json { render :show, status: :created, location: @edificio }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @edificio.errors, status: :unprocessable_entity }
-      end
+  
+    if @edificio.save
+      redirect_to @edificio, notice: 'Edificio was successfully created.'
+    else
+      render :new
     end
   end
 
@@ -65,6 +64,12 @@ class EdificiosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def edificio_params
-      params.require(:edificio).permit(:nombre, :direccion, :comuna_id, :piscina, :quincho, :gimnasio, :areas_verdes, :juegos_infantiles, :estacionamiento, :pet_friendly)
+      params.require(:edificio).permit(:nombre, :direccion, :comuna_id, :departamento_id, :piscina, :quincho, :gimnasio, :areas_verdes, :juegos_infantiles, :estacionamiento, :pet_friendly)
     end
-end
+    def check_admin
+      unless current_user.admin?
+        redirect_to root_path, alert: "No tienes permiso para realizar esta acción"
+      end
+    end
+  end
+

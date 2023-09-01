@@ -25,7 +25,13 @@
             <li class="nav-item">
               <%= link_to current_user.email, edit_user_registration_path, class: "nav-link" %>
             </li>
-           
+            <li class="nav-item">
+              <%= link_to 'Ver Todos los Edificios', edificios_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Crear Edificio', new_edificio_path, class: "nav-link" %>
+            </li>
+                       
             <li class="nav-item">
               <%= link_to "Cerrar Sesión", destroy_user_session_path, class: "nav-link" %>
             </li>

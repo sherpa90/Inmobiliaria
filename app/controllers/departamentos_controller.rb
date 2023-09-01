@@ -1,8 +1,13 @@
 class DepartamentosController < ApplicationController
-  before_action :set_departamento, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :check_if_admin_or_vendedor, only: [:index_admin]
 
   # GET /departamentos or /departamentos.json
   def index
+    @departamentos = Departamento.where(estado: 'disponible')
+  end
+
+  def index_admin
     @departamentos = Departamento.all
   end
 
@@ -69,4 +74,11 @@ class DepartamentosController < ApplicationController
     def departamento_params
       params.require(:departamento).permit(:numero, :precio, :habitaciones, :baños, :estado, :modalidad, :edificio_id)
     end
+
+    def check_if_admin_or_vendedor
+    unless current_user.admin? || current_user.vendedor?
+      redirect_to root_path, alert: "No tienes permiso para acceder a esta página"
+    end
+  end
 end
+

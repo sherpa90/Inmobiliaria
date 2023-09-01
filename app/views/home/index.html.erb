@@ -15,12 +15,12 @@
       <% @departamentos_disponibles.each do |departamento| %>
         <div class="col-md-4">
           <div class="card">
-            <img src="<%= url_for(departamento.imagenes.first) %>" alt="<%= departamento.nombre %>" class="card-img-top">
+           
             <div class="card-body">
-              <h5 class="card-title"><%= departamento.nombre %></h5>
+              <h5 class="card-title"><%= departamento.numero %></h5>
               <p class="card-text">
                 Habitaciones: <%= departamento.habitaciones %><br>
-                Baños: <%= departamento.banos %><br>
+                Baños: <%= departamento.baños %><br>
                 Modalidad: <%= departamento.modalidad %><br>
                 Precio: <%= departamento.precio %>
               </p>
