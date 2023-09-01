@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  numero: 1
+  precio: 1
+  habitaciones: 1
+  baños: 1
+  estado: MyString
+  modalidad: MyString
+  edificio_id: 1
+
+two:
+  numero: 1
+  precio: 1
+  habitaciones: 1
+  baños: 1
+  estado: MyString
+  modalidad: MyString
+  edificio_id: 1

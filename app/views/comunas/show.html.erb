@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @comuna %>
+
+<div>
+  <%= link_to "Edit this comuna", edit_comuna_path(@comuna) %> |
+  <%= link_to "Back to comunas", comunas_path %>
+
+  <%= button_to "Destroy this comuna", @comuna, method: :delete %>
+</div>

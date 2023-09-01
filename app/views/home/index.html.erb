@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h1>Bienvenido a Inmobiliaria Buena Vista</h1>
+        <p>Encuentra tu próximo hogar aquí.</p>
+      </div>
+      <div class="col-md-6">
+        <img src="path_to_your_image.jpg" alt="Imagen de Bienvenida" class="img-fluid">
+      </div>
+    </div>
+    
+    <h2>Propiedades disponibles</h2>
+    
+    <div class="row">
+      <% @departamentos_disponibles.each do |departamento| %>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="<%= url_for(departamento.imagenes.first) %>" alt="<%= departamento.nombre %>" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title"><%= departamento.nombre %></h5>
+              <p class="card-text">
+                Habitaciones: <%= departamento.habitaciones %><br>
+                Baños: <%= departamento.banos %><br>
+                Modalidad: <%= departamento.modalidad %><br>
+                Precio: <%= departamento.precio %>
+              </p>
+              <a href="<%= departamento_path(departamento) %>" class="btn btn-primary">Ver más detalles</a>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  

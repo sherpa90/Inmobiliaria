@@ -1,0 +1,67 @@
+<%= form_with(model: edificio) do |form| %>
+  <% if edificio.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(edificio.errors.count, "error") %> prohibited this edificio from being saved:</h2>
+
+      <ul>
+        <% edificio.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :nombre, style: "display: block" %>
+    <%= form.text_field :nombre %>
+  </div>
+
+  <div>
+    <%= form.label :direccion, style: "display: block" %>
+    <%= form.text_field :direccion %>
+  </div>
+
+  <div>
+    <%= form.label :comuna_id, style: "display: block" %>
+    <%= form.number_field :comuna_id %>
+  </div>
+
+  <div>
+    <%= form.label :piscina, style: "display: block" %>
+    <%= form.check_box :piscina %>
+  </div>
+
+  <div>
+    <%= form.label :quincho, style: "display: block" %>
+    <%= form.check_box :quincho %>
+  </div>
+
+  <div>
+    <%= form.label :gimnasio, style: "display: block" %>
+    <%= form.check_box :gimnasio %>
+  </div>
+
+  <div>
+    <%= form.label :areas_verdes, style: "display: block" %>
+    <%= form.check_box :areas_verdes %>
+  </div>
+
+  <div>
+    <%= form.label :juegos_infantiles, style: "display: block" %>
+    <%= form.check_box :juegos_infantiles %>
+  </div>
+
+  <div>
+    <%= form.label :estacionamiento, style: "display: block" %>
+    <%= form.check_box :estacionamiento %>
+  </div>
+
+  <div>
+    <%= form.label :pet_friendly, style: "display: block" %>
+    <%= form.check_box :pet_friendly %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
